@@ -25,8 +25,8 @@ router.get('/companies', function(req, res, next) {
 
 
   router.get('/sciencebase', function(req, res, next) {
-     sciencebase.find({}, function(err, data) {
-       res.json({data: data});
+     return sciencebase.find({}, function(err, data) {
+       res.send({data:data});
      });
    });
 
