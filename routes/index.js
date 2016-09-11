@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('monk')(process.env.MONGODB_URI || 'mongodb://localhost:27017/database');
 var companies = db.get('companies');
-var sciencebase = db.get('scienceBase')
+var sciencebase = db.get('sciencebase');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
