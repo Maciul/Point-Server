@@ -13,20 +13,20 @@ router.get('/', function(req, res, next) {
 
 router.get('/companies', function(req, res, next) {
    companies.find({}, function(err, data) {
-     console.log(data);
+
    });
  });
 
  router.get('/companies/:id', function(req, res, next) {
     companies.findOne({name : req.params.id}, function(err, data) {
-      console.log(data)
+      console.log(data);
     });
   });
 
 
   router.get('/sciencebase', function(req, res, next) {
      sciencebase.find({}, function(err, data) {
-       console.log(data);
+       res.json(data);
      });
    });
 
@@ -37,7 +37,7 @@ router.get('/companies', function(req, res, next) {
       });
     });
 
-    
+
 // Testing attention please!
     router.get('/test', function(req, res, next) {
       var promises = [
