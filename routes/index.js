@@ -20,6 +20,7 @@ router.get('/companies', function(req, res, next) {
  router.get('/companies/:id', function(req, res, next) {
     companies.findOne({name : req.params.id}, function(err, data) {
       res.json({data : data});
+
     });
   });
 
