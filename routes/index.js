@@ -13,27 +13,26 @@ router.get('/', function(req, res, next) {
 
 router.get('/companies', function(req, res, next) {
    companies.find({}, function(err, data) {
-
+     res.json({data: data});
    });
  });
 
  router.get('/companies/:id', function(req, res, next) {
     companies.findOne({name : req.params.id}, function(err, data) {
-      console.log(data);
+      res.json({data : data});
     });
   });
 
 
   router.get('/sciencebase', function(req, res, next) {
      return sciencebase.find({}, function(err, data) {
-       res.send({data:data});
+       res.json({data : data});
      });
    });
 
    router.get('/sciencebase/:year', function(req, res, next) {
-      sciencebase.find({
-        year: req.params.year}, function(err, data) {
-        console.log(data);
+      sciencebase.find({year: req.params.year}, function(err, data) {
+        res.json({data : data});
       });
     });
 
@@ -59,11 +58,11 @@ router.get('/companies', function(req, res, next) {
                     resolve(done);
            });
     })
-  ]
+  ];
   return Promise.all(promises).then(function(data) {
-    console.log(data)
+    console.log(data);
   });
-  })
+});
 
 
 module.exports = router;
