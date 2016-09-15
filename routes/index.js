@@ -38,7 +38,9 @@ router.get('/companies', function(req, res, next) {
       });
     });
 
-
+    router.get('/admin', function(req, res, next) {
+      res.render('admin')
+    })
 // Testing attention please!
     router.get('/test', function(req, res, next) {
       var promises = [
