@@ -5,8 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var whitelist = ['https://point380-d4eac.firebaseapp.com', 'https://point-380.firebaseapp.com'];
+var corsOptions = {
+  origin: function(origin, callback){
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(originIsWhitelisted ? null : 'Bad Request', originIsWhitelisted);
+  }
+};
+
 var cors = require('cors');
-// var mongojs = require('mongojs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -32,7 +39,7 @@ app.use(require('node-sass-middleware')({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use('/', routes);
 app.use('/users', users);
 
