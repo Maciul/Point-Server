@@ -3,7 +3,15 @@ var router = express.Router();
 var db = require('monk')(process.env.MONGODB_URI || 'mongodb://localhost:27017/database');
 var companies = db.get('companies');
 var sciencebase = db.get('sciencebase');
+var cors = require('cors');
 
+var whitelist = ['https://point380-d4eac.firebaseapp.com', 'https://point-380.firebaseapp.com'];
+var corsOptions = {
+  origin: function(origin, callback){
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(originIsWhitelisted ? null : 'Bad Request', originIsWhitelisted);
+  }
+};
 
 /* GET home page. */
 router.get('/', cors(), function(req, res, next) {
