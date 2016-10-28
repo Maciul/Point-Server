@@ -17,13 +17,17 @@ var corsOptions = {
 router.get('/', cors(), function(req, res, next) {
   res.json({
     message: 'We are in great success!'
+  }).catch(function(error) {
+    next(error);
   });
 });
 
 router.get('/companies', cors(corsOptions), function(req, res, next) {
    companies.find({}, function(err, data) {
      res.json({data: data});
-   });
+   }).catch(function(error) {
+    next(error);
+  });
  });
 
  router.get('/companies/:id', cors(corsOptions), function(req, res, next) {
