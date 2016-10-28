@@ -12,12 +12,9 @@
     "debug": "~2.2.0",
     "dotenv": "^2.0.0",
     "express": "~4.13.1",
-    "hbs": "~3.1.0",
     "mongojs": "^2.4.0",
     "monk": "^3.1.2",
     "morgan": "~1.6.1",
-    "node-sass-middleware": "0.8.0",
-    "request": "^2.74.0",
-    "serve-favicon": "~2.3.0"
+    "request": "^2.74.0"
   }
 }
