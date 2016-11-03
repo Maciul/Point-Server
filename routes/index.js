@@ -14,11 +14,9 @@ var corsOptions = {
 };
 
 /* GET home page. */
-router.get('/', cors(), function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.json({
     message: 'We are in great success!'
-  }).catch(function(error) {
-    next(error);
   });
 });
 
@@ -47,10 +45,6 @@ router.get('/companies', cors(corsOptions), function(req, res, next) {
       sciencebase.find({year: req.params.year}, function(err, data) {
         res.json({data : data});
       });
-    });
-
-    router.get('/admin', cors(), function(req, res, next) {
-      res.render('admin');
     });
 
 module.exports = router;
